@@ -1,0 +1,131 @@
+/* Recipe View styles: */
+
+body{
+    font-family: "Constantia", serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(79, 48, 16, 0.8),rgba(108, 84, 50, 0.8)),url(image_homepage.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+    
+  .recipe-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #9d1b1b;
+  }
+  
+  .title img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+  }
+  
+  .n-persons{
+    display: flex;
+    align-items: center;
+  }
+  .cooking-time{
+    display: flex;
+    align-items: center;
+  }
+  .dificulty-level{
+    display: flex;
+    align-items: center;
+  }
+  
+  .recipe-details img{
+    height: 25px;
+    margin-right: 20px
+  }
+  
+  .created-by p {
+    color: #b70d0d;
+  }
+  
+  .description p {
+    color: #444;
+    line-height: 1.6;
+    font-size: 15px; /* Cambia el tamaño de la fuente a 18px */ 
+  }
+  
+  .recipe-details p {
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+  
+  .ingredients ul {
+    list-style-type: disc;
+    padding-left: 15px;
+    margin-left: 15px;
+  }
+  
+  .ingredients li {
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 15px;
+    line-height: 2;
+  }
+  
+  .steps ol {
+    list-style: decimal;
+    margin-left: 15px;
+    color: #333;
+  }
+
+  .steps li{
+    font-size: 15px;
+    line-height: 2;
+  }
+  
+  .other-photos {
+    gap: 10px;
+  }
+  
+  .other-photos h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .other-photos img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .user-actions {
+    margin-top: 20px;
+  }
+  
+  .user-actions button,
+  .user-actions input[type="file"] {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #9d1b1b;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .user-actions button:hover,
+  .user-actions input[type="file"]:hover {
+    background-color: #9d1b1b;
+  }

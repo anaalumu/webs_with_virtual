@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Create a New Recipe</h1>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    Title:
+                </td>
+                <td>
+                    <input type="text" placeholder="Title" title="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Description:
+                </td>
+                <td>
+                    <input type="text" placeholder="Description" description="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Number of people:
+                </td>
+                <td>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8+</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Cooking time (min):
+                </td>
+                <td>
+                    <input type="text" placeholder="Cooking time" title="">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="Submit" value="Submit" name="">
+                </td>
+            </tr>
+        </table>
+    </form>
+<!--falta fotos ingredientes y steps-->
+{% endblock %}

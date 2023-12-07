@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block specific_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_userlogin.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="form-box">
+            <h1>Log In</h1>
+            <form>
+                <div class="input-group">
+                    <div class="input-field">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="input-field">
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <!--hay un video para poner lost password-->
+                </div>
+                <div class="btn-field">
+                    <button type="button" >Sign In</button>
+                    <button type="button" class="disable" onclick="window.location.href='userregister.html'">Sign Up</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

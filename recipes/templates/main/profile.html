@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="user-info">
+    <h1>User Profile</h1>
+    <h2><a href="user-profile.html">{{ user.name }}</a></h2>
+
+    <h3>Created Recipes:</h3>
+    <ul class="created-recipes">
+        {% for recipe in user.recipes %}
+            <li>{{ recipe.title }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h3>Uploaded Photos for Recipes:</h3>
+    <div class="uploaded-photos">
+        {% for photo in user.photos %}
+            <img src="{{ photo.url }}" alt="{{ photo.title }}">
+        {% endfor %}
+    </div>
+
+    {% if authenticated_user and authenticated_user.id == user.id %}
+        <h3>Bookmarked Recipes:</h3>
+        <ul class="bookmarked-recipes">
+            {% for bookmarked_recipe in user.bookmarks %}
+                <li>{{ bookmarked_recipe.title }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>
+
+{% endblock %}

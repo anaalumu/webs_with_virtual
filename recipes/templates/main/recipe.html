@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block specific_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_recipeView.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="recipe-container">
+    <div class="title">
+        <h1>{{recipe.title}}</h1>
+        <img src="{{recipe.photo}}" alt="Recipe Image">
+    </div>
+
+
+    <div class="created-by">
+        <p><b>Published by: </b> <i>{{recipe.user.name}}</i></p>
+    </div>
+
+    <div class="description">
+        <p>{{recipe.description}}</p>
+    </div>
+
+    <div class="recipe-details">
+        <div class="n-persons">
+            <img src = "static/person.png", alt ="person_symbol">
+            <p>Number of guests: <b>{{recipe.n_persons}}</b></p>
+        </div>
+
+        <div class="cooking-time">
+            <img src = "static/clock.png", alt ="clock_symbol">
+            <p>Cooking Time: <b>{{recipe.cooking_time}} min</b></p>
+        </div>
+
+        <div class="dificulty-level">
+            <img src = "static/hat.png", alt ="hat_symbol">
+            <p>Dificulty level: <b>{{recipe.dificulty}}</b></p>
+        </div>
+
+    </div>
+
+    <div class="ingredients">
+    <h2>Ingredients</h2>
+        <ul>
+            {% for ing in recipe.ingredients %}
+                <li>{{ing}}</li> 
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="steps">
+        <h2>Steps</h2>
+            <ol>
+                {% for step in recipe.steps %}
+                    <li>{{step}}</li> 
+                {% endfor %}
+            </ol>
+    </div>
+
+    <div class="other-photos">
+    <h2>Photos from other users:</h2>
+        {% for ph in recipe.other_photos %}
+            <img src="{{ph}}" alt="Imagen de otro usuario">  
+        {% endfor %}
+    </div>
+
+    <!-- Botones para usuarios registrados -->
+    <div class="user-actions">
+    <button id="favorite-btn">Mark as favorite</button>
+    <button id="rate-btn">Rate</button>
+    <input type="file" id="upload-photo" accept="image/*">
+    <button id="upload-photo-btn">Upload photo</button>
+    </div>
+</div>
+
+{% endblock %}
+
+

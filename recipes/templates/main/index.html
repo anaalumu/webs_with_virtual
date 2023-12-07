@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block specific_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_homePage.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="principal_image">
+  <img src="static/image_homepage.jpg" />
+  <div class="welcome-text">Delicious ideas for your Christmas dishes</div>
+</div>
+
+<section>
+    <h2>Latest recipes: </h2>
+        <div class=" recipes">
+            {% for recipe in recipes %}
+                {% include 'recipeHomePage_template.html' %}
+            {% endfor %}
+        </div>
+</section>
+
+
+{% endblock %}
