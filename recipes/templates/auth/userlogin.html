@@ -19,9 +19,14 @@
                     <!--hay un video para poner lost password-->
                 </div>
                 <div class="btn-field">
+<<<<<<< HEAD:recipes/templates/auth/userlogin.html
                     <!--<button type="button" >Log In</button>-->
                     <input type="submit" value = "Log In" class="login-btn"/>
                     <button type="button" class="disable" onclick="window.location.href='userregister.html'">Sign Up</button>
+=======
+                    <button type="button" >Sign In</button>
+                    <button type="button" class="disable" onclick="window.location.href='{{ url_for('main.userregister') }}'">Sign Up</button>
+>>>>>>> 25d299a (cambios userlogin userregister):recipes/templates/main/userlogin.html
                 </div>
 
             </form>

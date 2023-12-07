@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block specific_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_userregister.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="form-box">
+            <h1>Sign Up</h1>
+            <form>
+                <div class="input-group">
+                    <div class="input-field">
+                        <!--hay un video para poner un icono si queremos-->
+                        <input type="text" placeholder="Name">
+                    </div>
+                    <div class="input-field">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="input-field">
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <!--hay un video para poner lost password-->
+                </div>
+                <div class="btn-field">
+                    <button type="button" >Sign Up</button>
+                    <button type="button" class="disable" onclick="window.location.href='{{ url_for('main.userlogin') }}'">Sign In</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
