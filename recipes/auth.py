@@ -5,6 +5,29 @@ from . import model
 
 bp = Blueprint("auth", __name__)
 
+@bp.route("/userlogin")
+def login():
+    return render_template("auth/login.html")
+
+@bp.route("/userlogin", methods=["POST"] )
+def login_post():
+    email = request.form.get("email")
+    password = request.form.get("password")
+
+   #check the user with that email 
+    user = User.query.filter_by(email=email).first()
+
+    if user and bcrypt.check_password_hash(user.password, password):
+      #correct password  
+        flash("Welcome!")
+        return redirect(url_for("main.index"))
+    else:
+        flash("Invalid email or password. Please try again.")
+        return redirect(url_for("auth.login"))
+
+
+
+
 
 @bp.route("/signup")
 def signup():
@@ -16,11 +39,12 @@ def signup_post():
     email = request.form.get("email")
     username = request.form.get("username")
     password = request.form.get("password")
-    # Check that passwords are equal
 
+    # Check that passwords are equal
     if password != request.form.get("password_repeat"):
         flash("Sorry, passwords are different")
-        return redirect(url_for("auth.signup"))"""
+        return redirect(url_for("auth.signup"))
+        
     # Check if the email is already at the database
     query = db.select(model.User).where(model.User.email == email)
     user = db.session.execute(query).scalar_one_or_none()
