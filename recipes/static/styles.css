@@ -9,6 +9,7 @@ header{
     justify-content: space-between;
     padding: 10px;
     font-family: "Constantia", serif;
+    font-size: 20px;
 }
 
 footer{
@@ -36,8 +37,11 @@ nav a{
     padding-left: 20px;
 }
 
-.nav{
-    display: flex; /* Establece el contenedor como un flex container */
-    justify-content: space-between;
-} 
+.nav-container {
+    display: flex;
+    align-items: center;
+}
 
+.welcome-user{
+    padding-left: 15px;
+} 

@@ -15,7 +15,7 @@
             <img src = "static/logo.png", alt ="picture fork">
             <h2>Christmas Recipes</h2>
         </div>
-        <nav>
+        <nav class="nav-container">
             <a href="{{ url_for('main.index') }}">Home</a></li>
             <a href="{{ url_for('main.create_recipe') }}">Create Recipe</a></li>
             {% if current_user.is_authenticated %}
