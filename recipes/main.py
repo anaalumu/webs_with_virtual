@@ -2,7 +2,7 @@ import datetime
 import dateutil.tz
 
 from flask import Blueprint, render_template
-
+from flask_login import current_user
 
 from . import model
 

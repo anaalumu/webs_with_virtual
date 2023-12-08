@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from . import db, bcrypt
+import flask_login
+from flask_login import current_user
 
 from . import model
 
@@ -20,6 +22,7 @@ def userlogin_post():
     if user and bcrypt.check_password_hash(user.password, password):
       #correct password  
         flash("Welcome!")
+        flask_login.login_user(user)
         return redirect(url_for("main.index"))
     else:
         flash("Invalid email or password. Please try again.")
@@ -57,4 +60,4 @@ def signup_post():
     db.session.commit()
 
     flash("You've successfully signed up!")
-    return redirect(url_for("main.index"))
+    return redirect(url_for("auth.userlogin"))
