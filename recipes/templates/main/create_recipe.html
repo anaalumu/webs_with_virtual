@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block specific_css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles_userregister.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_forms.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -21,9 +21,18 @@
                         <option value="1">1 person</option>
                         <option value="2">2 people</option>
                         <option value="3">3 people</option>
+                        <option value="3">4 people</option>
+                        <option value="3">5 people</option>
+                        <option value="3">6+ people</option>
                     </select>
                 </div>
-                
+                <div class="input-field">
+                    <input type="number" placeholder="Cooking Time (min)">
+                </div>
+                <div class="input-field">
+                    <!---se puede poner como option-->
+                    <input type="number" placeholder="Difficulty (easy,medium,hard,expert)">
+                </div>
                 <!--hay un video para poner lost password-->
             </div>
             <div class="btn-field">

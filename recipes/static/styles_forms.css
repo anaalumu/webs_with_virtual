@@ -81,3 +81,12 @@ input{
 .input-group{
     height:280px;
 } 
+
+.input-group select{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}     
