@@ -45,3 +45,17 @@ nav a{
 .welcome-user{
     padding-left: 15px;
 } 
+
+.log-out-btn{
+    border-radius: 10px; 
+    padding: 10px; 
+    background-color: #8d1a1a; 
+    width: 100px;
+    padding-left: 10px;
+    margin-left: 15px;
+}
+
+.log-out-btn a {
+    color: white;
+    font-weight: bold;
+}

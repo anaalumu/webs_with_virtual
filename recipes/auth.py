@@ -2,10 +2,21 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from . import db, bcrypt
 import flask_login
 from flask_login import current_user
+from flask_login import logout_user
 
 from . import model
 
 bp = Blueprint("auth", __name__)
+
+@bp.route("/logout")
+def logout():
+    return render_template("auth/logout.html")
+
+@bp.route("/logout", methods=["POST"] )
+def logout_post():
+    logout_user()  
+    return redirect(url_for('auth.userlogin')) 
+
 
 @bp.route("/userlogin")
 def userlogin():
@@ -27,9 +38,6 @@ def userlogin_post():
     else:
         flash("Invalid email or password. Please try again.")
         return redirect(url_for("auth.userlogin"))
-
-
-
 
 
 @bp.route("/signup")

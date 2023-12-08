@@ -9,7 +9,7 @@
 }
 
 .form-box{
-    width:90%;
+    width:50%;
     max-width: 450px;
     position: absolute;
     top: 50%;
@@ -26,6 +26,10 @@
     margin-bottom: 60px;
     position: relative;
 }
+
+.form-box p{
+    font-size: 20px;
+} 
 
 .form-box h1::after{
     content: '';
@@ -82,20 +86,24 @@ input{
     height:280px;
 }
 
+
 /* Syles for the buttom */
-.login-btn {
+.logout-btn {
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
-    background-color:#938989; 
+    background-color: #938989; 
     color: #000000; 
     text-decoration: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 100px;
 }
 
 .login-btn:hover {
-    background-color: #cc0000; 
+    background-color: #cb6060;
 }
+
+
