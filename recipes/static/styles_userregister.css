@@ -73,11 +73,11 @@ input{
     transition: background 1s; 
 }
 
-.input-group{
-    height: 280px;
-}
-
 .btn-field button.disable{
     background: #eaeaea;
     color:#555;
 }
+
+.input-group{
+    height:280px;
+} 

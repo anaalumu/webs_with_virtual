@@ -11,26 +11,22 @@ bp = Blueprint("main", __name__)
 
 @bp.route("/")
 def index():
-    user = model.User(name = "Mary", password = "1234", email = "mary@example.com")
+    """user = model.User(name = "Mary", password = "1234", email = "mary@example.com")
     r = model.Recipe(user_id = 1, title = "Gingerbread Cookies", main_photo = "static/recipe1.jpg", 
     description = "Delicius cookies for doing on christmas", cooking_time = 40, n_person = 4, dificulty = "Easy", 
                      quantified_ingredients = ["5 Eggs", "500 gr Flour", "Ginger", "50 gr Sugar"], steps = ["Beat the eggs", "Take a spoon", "Turn on the oven", "Decorate"]) 
        # model.Recipe(2, user, "Stuffed Chicken", "static/recipe2.jpg"),
-       # model.Recipe(3, user, "Panetone", "static/recipe3.jpg")   
-    return render_template("main/index.html", recipes = r)
+       # model.Recipe(3, user, "Panetone", "static/recipe3.jpg")"""   
+    return render_template("main/index.html") 
 
 @bp.route("/profile")
 def profile():
-    user = model.User(name = "Mary", password = "1234", email = "mary@example.com")
-    return render_template("main/profile.html", user = user)
+   # user = model.User(name = "Mary", password = "1234", email = "mary@example.com")
+    return render_template("main/profile.html")
 
 @bp.route("/userlogin")
 def userlogin():
     return render_template("main/userlogin.html")
-
-@bp.route("/userregister")
-def userregister():
-    return render_template("main/userregister.html")
 
 @bp.route("/create_recipe")
 def create_recipe():
@@ -43,5 +39,5 @@ def recipe():
    # r = model.Recipe(user_id = 1, title = "Gingerbread Cookies", main_photo = "static/recipe1.jpg", 
   #  description = "Delicius cookies for doing on christmas", cooking_time = 40, n_person = 4, dificulty = "Easy", 
    #                  quantified_ingredients = ["5 Eggs", "500 gr Flour", "Ginger", "50 gr Sugar"], steps = ["Beat the eggs", "Take a spoon", "Turn on the oven", "Decorate"])
-    return render_template("main/recipe.html", recipe = r)
+    return render_template("main/recipe.html")
 

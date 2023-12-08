@@ -12,6 +12,8 @@
                 <div class="input-group">
                     <div class="input-field">
                         <!--hay un video para poner un icono si queremos-->
+                    </div>
+                    <div class="input-field">
                         <input type="text" name="username" placeholder="Username" required/>
                     </div>
                     <div class="input-field">
@@ -21,7 +23,7 @@
                         <input type="password" name="password" placeholder="Password" required/>
                     </div>
                     <div class="input-field">
-                        <input type="password" name="repeat_password" placeholder="Repeat Password" required/>
+                        <input type="password" name="password_repeat" placeholder="Repeat Password" required/>
                     </div>
                     <!--hay un video para poner lost password-->
                 </div>
@@ -31,6 +33,13 @@
                 </div>
 
             </form>
+            <div class="flash-messages">
+                {% with messages = get_flashed_messages() %}
+                    {% for message in messages %}
+                <div class="notification">{{ message }}</div>
+                    {% endfor %}
+                {% endwith %}
+            </div>
         </div>
     </div>
 

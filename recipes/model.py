@@ -45,7 +45,7 @@ class Steps(db.Model):
     description = db.Column(db.Text, nullable=False)
     sequence_number = db.Column(db.Integer, nullable=False)
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
-    recipe = db.relationship('Recipes', back_populates='steps')
+    recipes = db.relationship('Recipes', back_populates='steps')
 
 class Rating(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -59,7 +59,7 @@ class Bookmarks(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
-    recipe = db.relationship('Recipes', back_populates='bookmarks')
+    recipes = db.relationship('Recipes', back_populates='bookmarks')
     user = db.relationship('User', back_populates='bookmarks')
 
 class Photos(db.Model):
@@ -68,7 +68,7 @@ class Photos(db.Model):
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
     file_extension = db.Column(db.String(10), nullable=False)
     user = db.relationship('User', back_populates='photos')
-    recipe = db.relationship('Recipes', back_populates='photos')
+    recipes = db.relationship('Recipes', back_populates='photos')
     
 
 
