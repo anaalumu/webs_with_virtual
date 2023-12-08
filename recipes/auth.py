@@ -6,16 +6,16 @@ from . import model
 bp = Blueprint("auth", __name__)
 
 @bp.route("/userlogin")
-def login():
-    return render_template("auth/login.html")
+def userlogin():
+    return render_template("auth/userlogin.html")
 
 @bp.route("/userlogin", methods=["POST"] )
-def login_post():
+def userlogin_post():
     email = request.form.get("email")
     password = request.form.get("password")
 
    #check the user with that email 
-    user = User.query.filter_by(email=email).first()
+    user = model.User.query.filter_by(email=email).first()
 
     if user and bcrypt.check_password_hash(user.password, password):
       #correct password  
@@ -23,7 +23,7 @@ def login_post():
         return redirect(url_for("main.index"))
     else:
         flash("Invalid email or password. Please try again.")
-        return redirect(url_for("auth.login"))
+        return redirect(url_for("auth.userlogin"))
 
 
 
