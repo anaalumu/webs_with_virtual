@@ -17,7 +17,8 @@
                     <input type="text" placeholder="Description">
                 </div>
                 <div class="input-field">
-                    <select>
+                    <label for="people">Number of People:</label>
+                    <select id="people" name="people">
                         <option value="1">1 person</option>
                         <option value="2">2 people</option>
                         <option value="3">3 people</option>
@@ -30,10 +31,18 @@
                     <input type="number" placeholder="Cooking Time (min)">
                 </div>
                 <div class="input-field">
-                    <!---se puede poner como option-->
-                    <input type="number" placeholder="Difficulty (easy,medium,hard,expert)">
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty" name="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>                
+                <div class="input-field">
+                    <label for="photo">Upload Photo:</label>
+                    <input type="file" id="photo" name="photo" accept="image/*">
                 </div>
-                <!--hay un video para poner lost password-->
             </div>
             <div class="btn-field">
                 <button type="button" >Upload</button>

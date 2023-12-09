@@ -8,16 +8,14 @@
     position: relative;
 }
 
-.form-box{
-    width:90%;
+.form-box {
+    width: 90%;
     max-width: 450px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background:#fff;
+    position: relative; 
+    margin: 0 auto; 
+    background: #fff;
     padding: 50px 60px 70px;
-    text-align:center;
+    text-align: center;
 }
 
 .form-box h1{
@@ -41,7 +39,7 @@
 
 .input-field{
     background: #eaeaea;
-    margin: 15px 0;
+    margin: 10px 0;
     border-radius: 3px;
     display: flex;
     align-items: center;
@@ -79,7 +77,7 @@ input{
 }
 
 .input-group{
-    height:280px;
+    height:adjust;
 } 
 
 .input-group select{
@@ -89,4 +87,31 @@ input{
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
-}     
+}   
+
+.input-field input[type="text"],
+.input-field input[type="number"],
+.input-field input[type="file"],
+.input-field select {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    outline: 0;
+    padding: 18px 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    margin: 15px 0;
+}
+
+/* Additional styling for the file input label */
+.input-field label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgba(79, 48, 16, 0.8);
+}
+
+/* Additional styling for the submit button */
+.btn-field button {
+    flex-basis: 100%; /* Make the button take full width */
+}
