@@ -34,4 +34,7 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
 
+    from . import recipe
+    app.register_blueprint(recipe.bp)
+
     return app

@@ -1,6 +1,3 @@
-import datetime
-import dateutil.tz
-
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import current_user
 
@@ -23,23 +20,5 @@ def index():
 def profile():
    # user = model.User(name = "Mary", password = "1234", email = "mary@example.com")
     return render_template("main/profile.html")
-
-@bp.route("/create_recipe")
-def create_recipe():
-    return render_template("main/create_recipe.html")
-
-@bp.route("/recipe1")
-def recipe1():
-    """Esto es solo un ejemplo de como se vería una receta, pero hay que ver como hacer para que cuando se de click a una, se 
-    forme la vista"""
-    r = model.RecipePreuba(recipe_id = 1, user = "Mary", title = "Gingerbread Cookies", photo = "static/recipe1.jpg", 
-    description = "Delicius cookies for doing on christmas", cooking_time = 40, n_persons = 4, dificulty = "Easy", 
-    ingredients = ["5 Eggs", "500 gr Flour", "Ginger", "50 gr Sugar"], steps = ["Beat the eggs", "Take a spoon", "Turn on the oven", "Decorate"],
-    other_photos =["static/ou1.jpg", "static/ou2.jpeg"] )
-    return render_template("main/recipe.html", recipe = r)
-
-@bp.route("/recipe1", methods=["POST"])
-def recipe1_post():
-    r = request.form.get("rating")
 
 
