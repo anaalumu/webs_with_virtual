@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block specific_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_recipeView.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="recipe-info">
+    <h1>The information you provided from the recipe is:</h1>
+        <ul>
+            <li><b>Title: </b>{{recipe.title}}</li>
+            <li><b>Description: </b>{{recipe.description}}</li>
+            <li><b>Number of guests: </b>{{recipe.n_person}}</li>
+            <li><b>Cooking Time: </b>{{recipe.cooking_time}}</li>
+            <li><b>Dificulty level: </b>{{recipe.dificulty}}</li>
+        </ul>
+        <p>Image: </p>
+        <img src="{{ url_for('static', filename='main_photos/' + recipe.main_photo) }}" alt="Recipe Image">
+
+</div>
+
+{% endblock %}
+
+
