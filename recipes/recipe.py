@@ -54,9 +54,53 @@ def create_recipe_post():
     new_recipe.main_photo = filename
     db.session.commit()
 
-   #render template -> segunda parte del form donde se añaden los ingredientes
-   #de momento lo hacemos  con la view pero sin los ingredientes y steps
-    return redirect(url_for("recipe.recipe", recipe_id=new_recipe.id))
+   # we need to get all the ingredients from Ingredients:
+    existing_ingredients = Ingredients.query.all()
+    return render_template("recipe/recipe_interm.html", recipe_id=new_recipe.id, existing_ingredients=existing_ingredients)
+
+
+@bp.route("/recipe_interm/<int:recipe_id>")
+@flask_login.login_required
+def recipe_interm(recipe_id):
+    recipe = db.get_or_404(model.Recipes, recipe_id)
+    return render_template("recipe/create_recipe.html")
+
+@bp.route("/recipe_interm/<int:recipe_id>", methods=["POST"])
+@flask_login.login_required
+def recipe_interm_post(recipe_id):
+    if request.form.get("add_ingredient"):
+        ingredient_name = request.form.get("ingredient")
+        quantity = request.form.get("quantity")
+        units = request.form.get("units")
+       #check if exits:
+       ingredient = Ingredients.query.filter_by(name = ingredient_name).first()
+       if not ingredient:
+            ingredient = model.Ingredients(name = ingredient_name)
+            db.session.add(ingredient)
+            db.session.commit()
+        
+        existing_ingredients = Ingredients.query.all()
+        quantified_ingredient = model.QuantifiedIngredients(number = quantity, unit_measurement = units,
+        ingredients_id = ingredient.id, recipes_id = recipe_id)
+
+        db.session.add(quantified_ingredient)
+        db.session.commit()
+        return redirect(url_for("recipe.recipe_interm", recipe_id=recipe_id, existing_ingredients = existing_ingredients))
+    
+    else if request.form.get("steps"):
+      #check how many steps are already
+        existing_steps = Steps.query.filter_by(recipe_id=recipe_id).count()
+        seq_n = existing_steps + 1
+
+        step = request.form.get("step_description")
+        new_step = model.Steps(description = step, sequence_number = seq_n, recipe_id = recipe_id)
+
+        db.session.add(new_step)
+        db.session.commit()
+        return redirect(url_for("recipe.recipe_interm", recipe_id=recipe_id))
+
+    else if "mark_complete" in request.form:
+        return render_template("recipe/recipe.html", recipe_id = recipe_id)
 
 @bp.route("/recipe/<int:recipe_id>")
 @flask_login.login_required

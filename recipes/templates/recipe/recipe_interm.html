@@ -16,6 +16,36 @@
         </ul>
         <p>Image: </p>
         <img src="{{ url_for('static', filename='main_photos/' + recipe.main_photo) }}" alt="Recipe Image">
+    
+    <div class="ingredients"> 
+        <h2>Ingredientsalready added:</h2>
+            <ul>
+                {% for ing in recipe.ingredients %}
+                    <li>{{ing}}</li> 
+                {% endfor %}
+            </ul>
+    </div>
+    <form action="{{ url_for('recipe.recipe_interm_post', recipe_id=recipe.id) }}" method="post">
+        <input type="text" list="ingredients" name="ingredient" placeholder="Select or Add Ingredient" required>
+        <datalist id="ingredients">
+            {% for ingredient in existing_ingredients %}
+                <option value="{{ ingredient.name }}">
+            {% endfor %}
+        </datalist>
+        <input type="number" name="quantity" placeholder="Quantity" required>
+        <input type="text" name="units" placeholder="Units" required>
+        <button type="submit" name="add_ingredient">Add Ingredient</button>
+    </form>
+
+    <form action="{{ url_for('recipe.recipe_interm_post', recipe_id=recipe.id) }}" method="post">
+        <textarea name="step_description" placeholder="Enter Step Description" required></textarea>
+        <button type="submit" name="add_step">Add Step</button>
+    </form>
+    
+    <!-- Mark Recipe as Complete -->
+    <form action="{{ url_for('recipe.recipe_interm_post', recipe_id=recipe.id) }}" method="post">
+        <button type="submit" name="mark_complete">Submit Recipe</button>
+    </form>
 
 </div>
 
