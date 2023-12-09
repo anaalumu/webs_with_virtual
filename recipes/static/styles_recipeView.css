@@ -109,23 +109,52 @@ body{
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   }
   
-  .user-actions {
+  .forms-for-users {
     margin-top: 20px;
   }
+
+  .rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    
+  }
   
-  .user-actions button,
-  .user-actions input[type="file"] {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #9d1b1b;
-    color: #fff;
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    display: inline-block;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+    padding: 5px;
   }
   
-  .user-actions button:hover,
-  .user-actions input[type="file"]:hover {
-    background-color: #9d1b1b;
+  .rating label:before {
+    content: '\2605';
+    font-size: 30px;
+    color: grey;
   }
+  
+  .rating input:checked ~ label:before {
+    color: rgb(195, 35, 35);
+  }
+
+  .btn-field{
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-field button{
+    flex-basis: 48%;
+    background: rgba(79, 48, 16, 0.8);
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s; 
+}
+

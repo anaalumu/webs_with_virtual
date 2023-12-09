@@ -63,15 +63,30 @@
             <img src="{{ph}}" alt="Imagen de otro usuario">  
         {% endfor %}
     </div>
-
-    <!-- Botones para usuarios registrados -->
-    <div class="user-actions">
-    <button id="favorite-btn">Mark as favorite</button>
-    <button id="rate-btn">Rate</button>
-    <input type="file" id="upload-photo" accept="image/*">
-    <button id="upload-photo-btn">Upload photo</button>
+    {% if current_user.is_authenticated %}
+    <div class="forms-for-users">
+        <!--Rate, Bookmark and upload a photo-->
+            <h2>Rate the recipe!</h2>
+            <form action="{{ url_for('main.recipe1')}}" method="post">
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value=5 />
+                    <label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value=4 />
+                    <label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value=3 />
+                    <label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value=2 />
+                    <label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value=1 />
+                    <label for="star1"></label>
+                </div>
+                <div class="btn-field">
+                    <button type="submit" >Rate</button>
+                </div>
+            </form>
+          </div>
     </div>
-</div>
+   {% endif %} 
 
 {% endblock %}
 

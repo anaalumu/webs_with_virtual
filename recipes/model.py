@@ -50,7 +50,7 @@ class Steps(db.Model):
 
 class Rating(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    value = db.Column(db.Float, nullable=False)
+    value = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     recipes_id = db.Column(db.Integer, db.ForeignKey('recipes.id'), nullable=False)
     user = db.relationship('User', back_populates='ratings')
@@ -71,15 +71,9 @@ class Photos(db.Model):
     user = db.relationship('User', back_populates='photos')
     recipes = db.relationship('Recipes', back_populates='photos')
     
+#dejo esta clase para hacer pruebas hasta que tengamos la base de datos conectada
 
-
-"""class User:
-    def __init__(self, user_id, email, name):
-        self.user_id = user_id
-        self.email = email
-        self.name = name
-
-class Recipe:
+class RecipePreuba:
     def __init__(self, recipe_id, user, title, photo, description, cooking_time, n_persons, dificulty, ingredients, steps, other_photos):
         self.recipe_id = recipe_id
         self.user = user
@@ -91,4 +85,4 @@ class Recipe:
         self.dificulty = dificulty
         self.ingredients = ingredients
         self.steps = steps
-        self.other_photos = other_photos"""
+        self.other_photos = other_photos
