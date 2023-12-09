@@ -8,7 +8,7 @@
 <div class="content">
     <div class="form-box">
         <h1>Create a New Recipe</h1>
-        <form action="{{ url_for('main.create_recipe')}}" method="post">
+        <form action="{{ url_for('recipe.create_recipe')}}" method="post" enctype="multipart/form-data">
             <div class="input-group">
                 <div class="input-field">
                     <input type="text" name = "title" placeholder="Title" required/>
@@ -18,7 +18,7 @@
                 </div>
                 <div class="input-field">
                     <label for="people">Number of People:</label>
-                    <select id="people" name="n_person" required/>
+                    <select id="people" name="n_person" required>
                         <option value="1">1 person</option>
                         <option value="2">2 people</option>
                         <option value="3">3 people</option>
@@ -41,14 +41,21 @@
                 </div>                
                 <div class="input-field">
                     <label for="photo">Upload Photo:</label>
-                    <input type="file" id="photo" name="main_photo" accept="image/*" required/>
+                    <input type="file" id= "main_photo" name="main_photo" accept="image/jpeg,image/png" required/>
                 </div>
             </div>
             <div class="btn-field">
-                <button type="button" >Upload</button>
+                <button type="submit" >Upload</button>
             </div>
 
         </form>
+        <div class="flash-messages">
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+            <div class="notification">{{ message }}</div>
+                {% endfor %}
+            {% endwith %}
+        </div>
     </div>
 </div>
 

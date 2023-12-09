@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recetario - Inicio</title>
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     {% block specific_css %}{% endblock %}
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <img src = "static/logo.png", alt ="picture fork">
+            <img src = "{{ url_for('static', filename='logo.png') }}", alt ="picture fork">
             <h2>Christmas Recipes</h2>
         </div>
         <nav class="nav-container">

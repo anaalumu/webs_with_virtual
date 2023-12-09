@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block specific_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_recipeView.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="recipe-container">
+    <div class="title">
+        <h1>{{recipe.title}}</h1>
+        <img src="{{ url_for('static', filename='main_photos/' + recipe.main_photo) }}" alt="Recipe Image">
+    </div>
+
+
+    <div class="created-by">
+        <p><b>Published by: </b> <i>{{recipe.user.name}}</i></p>
+    </div>
+
+    <div class="description">
+        <p>{{recipe.description}}</p>
+    </div>
+
+    <div class="recipe-details">
+        <div class="n-persons">
+            <img src = "{{ url_for('static', filename= 'person.png') }}", alt ="person_symbol">
+            <p>Number of guests: <b>{{recipe.n_person}}</b></p>
+        </div>
+
+        <div class="cooking-time">
+            <img src = "{{ url_for('static', filename= 'clock.png') }}", alt ="clock_symbol">
+            <p>Cooking Time: <b>{{recipe.cooking_time}} min</b></p>
+        </div>
+
+        <div class="dificulty-level">
+            <img src = "{{ url_for('static', filename= 'hat.png') }}", alt ="hat_symbol">
+            <p>Dificulty level: <b>{{recipe.dificulty}}</b></p>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+
