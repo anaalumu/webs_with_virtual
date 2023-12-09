@@ -1,0 +1,79 @@
+/* Recipe View styles: */
+
+body {
+    font-family: "Constantia", serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(79, 48, 16, 0.8),rgba(108, 84, 50, 0.8)), url(image_homepage.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.recipe-info {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.recipe-info h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #9d1b1b;
+}
+
+.recipe-info img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+}
+
+.ingredients ul {
+    list-style-type: disc;
+    padding-left: 15px;
+    margin-left: 15px;
+}
+
+.ingredients li {
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.forms-for-users {
+    margin-top: 20px;
+}
+
+.forms-for-users input[type="text"],
+.forms-for-users input[type="number"],
+.forms-for-users textarea,
+.forms-for-users button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.forms-for-users button {
+    background: rgba(79, 48, 16, 0.8);
+    color: #fff;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.forms-for-users button:hover {
+    background: rgba(108, 84, 50, 0.8);
+}

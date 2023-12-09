@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block specific_css %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles_recipeView.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_recipeInterm.css') }}">
 {% endblock %}
 
 {% block content %}
@@ -18,14 +18,22 @@
         <img src="{{ url_for('static', filename='main_photos/' + recipe.main_photo) }}" alt="Recipe Image">
     
     <div class="ingredients"> 
-        <h2>Ingredientsalready added:</h2>
+        <h2>Ingredients already added:</h2>
             <ul>
                 {% for ing in recipe.ingredients %}
                     <li>{{ing}}</li> 
                 {% endfor %}
             </ul>
     </div>
-    <form action="{{ url_for('recipe.recipe_interm_post', recipe_id=recipe.id) }}" method="post">
+    <div class="steps">
+        <h2>Steps already added:</h2>
+            <ol>
+                {% for step in recipe.steps %}
+                    <li>{{step}}</li> 
+                {% endfor %}
+            </ol>
+    </div>
+    <form action="{{ url_for('recipe.recipe_interm/add_ingredient', recipe_id=recipe.id) }}" method="post">
         <input type="text" list="ingredients" name="ingredient" placeholder="Select or Add Ingredient" required>
         <datalist id="ingredients">
             {% for ingredient in existing_ingredients %}
@@ -37,13 +45,13 @@
         <button type="submit" name="add_ingredient">Add Ingredient</button>
     </form>
 
-    <form action="{{ url_for('recipe.recipe_interm_post', recipe_id=recipe.id) }}" method="post">
+    <form action="{{ url_for('recipe_interm.add_step', recipe_id=recipe.id) }}" method="post">
         <textarea name="step_description" placeholder="Enter Step Description" required></textarea>
         <button type="submit" name="add_step">Add Step</button>
     </form>
     
     <!-- Mark Recipe as Complete -->
-    <form action="{{ url_for('recipe.recipe_interm_post', recipe_id=recipe.id) }}" method="post">
+    <form action="{{ url_for('recipe_interm.recipe-completed', recipe_id=recipe.id) }}" method="post">
         <button type="submit" name="mark_complete">Submit Recipe</button>
     </form>
 
