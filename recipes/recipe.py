@@ -5,12 +5,14 @@ from flask_login import current_user
 from flask_sqlalchemy import SQLAlchemy
 import pathlib
 from flask import current_app
+from flask import session
 
 from . import model
 
 MAIN_PHOTOS_FOLDER = "/static/main_photos"
 
 bp = Blueprint("recipe", __name__)
+    
 
 @bp.route("/create_recipe")
 @flask_login.login_required
@@ -54,16 +56,14 @@ def create_recipe_post():
     new_recipe.main_photo = filename
     db.session.commit()
 
-   # we need to get all the ingredients from Ingredients:
-    existing_ingredients = model.Ingredients.query.all()
-    return render_template("recipe/recipe_interm.html", recipe=new_recipe, existing_ingredients=existing_ingredients)
+    return render_template("recipe/recipe_interm.html", recipe = new_recipe)
 
 
 @bp.route("/recipe_interm/<int:recipe_id>")
 @flask_login.login_required
-def recipe_interm(recipe_id):
-    recipe = db.get_or_404(model.Recipes, recipe_id)
-    return render_template("recipe/recipe_interm.html")
+def recipe_interm(recipe):
+    session["recipe_id"] = recipe.id
+    return render_template("recipe/recipe_interm.html", recipe = recipe)
 
 @bp.route("/recipe_interm/<int:recipe_id>/add_ingredient", methods=["POST"])
 @flask_login.login_required
@@ -72,7 +72,7 @@ def add_ingredient(recipe_id):
     quantity = request.form.get("quantity")
     units = request.form.get("units")
     #check if exits:
-    ingredient = Ingredients.query.filter_by(name = ingredient_name).first()
+    ingredient = model.Ingredients.query.filter_by(name = ingredient_name).first()
     if not ingredient:
         ingredient = model.Ingredients(name = ingredient_name)
         db.session.add(ingredient)
@@ -83,15 +83,30 @@ def add_ingredient(recipe_id):
     ingredients_id = ingredient.id, recipes_id = recipe_id)
 
     db.session.add(quantified_ingredient)
-    db.session.commit()
-    session['existing_ingredients'] = existing_ingredients
-    return redirect(url_for("recipe.recipe_interm", recipe_id=recipe_id))
+    db.session.commit() 
+
+    ingredients = (
+    db.session.query(model.Ingredients.name)
+    .join(model.QuantifiedIngredients)
+    .filter(model.QuantifiedIngredients.recipes_id == recipe_id)
+    .all())
+    ingredient_names = [ing[0] for ing in ingredients]
+
+    steps = (
+    db.session.query(model.Steps.description)
+    .filter(model.Steps.recipe_id == recipe_id)
+    .all())
+    steps_names =[st[0] for st in steps]
+    recipe = model.Recipes.query.get(recipe_id)
+
+    return render_template("recipe/recipe_interm.html", recipe=recipe, 
+    ingredients = ingredient_names, steps = steps_names)
     
 @bp.route("/recipe_interm/<int:recipe_id>/add_step", methods=["POST"])
 @flask_login.login_required
 def add_step(recipe_id):
     #check how many steps are already
-    existing_steps = Steps.query.filter_by(recipe_id=recipe_id).count()
+    existing_steps = model.Steps.query.filter_by(recipe_id=recipe_id).count()
     seq_n = existing_steps + 1
 
     step = request.form.get("step_description")
@@ -99,20 +114,70 @@ def add_step(recipe_id):
 
     db.session.add(new_step)
     db.session.commit()
-    return redirect(url_for("recipe.recipe_interm", recipe_id=recipe_id))
+
+    ingredients = (
+    db.session.query(model.Ingredients.name)
+    .join(model.QuantifiedIngredients)
+    .filter(model.QuantifiedIngredients.recipes_id == recipe_id)
+    .all())
+    ingredient_names = [ing[0] for ing in ingredients]
+
+    steps = (
+    db.session.query(model.Steps.description)
+    .filter(model.Steps.recipe_id == recipe_id)
+    .all())
+    steps_names =[st[0] for st in steps]
+    recipe = model.Recipes.query.get(recipe_id)
+
+    return render_template("recipe/recipe_interm.html", recipe=recipe, 
+    ingredients = ingredient_names, steps = steps_names)
+    
+
 
 
 @bp.route("/recipe_interm/<int:recipe_id>/recipe-completed", methods=["POST"])
 @flask_login.login_required
 def recipe_completed(recipe_id):
-    recipe = Recipes.query.get(recipe_id)
-    return render_template("recipe/recipe.html", recipe = recipe)
+    return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
 
-@bp.route("/recipe/<int:recipe_id>")
+@bp.route("/recipe_view/<int:recipe_id>")
 @flask_login.login_required
-def recipe(recipe_id):
-    recipe = db.get_or_404(model.Recipes, recipe_id)
-    return render_template("recipe/recipe.html", recipe = recipe)
+def recipe_view(recipe_id):
+    recipe = model.Recipes.query.get(recipe_id)
+    ingredients = (
+    db.session.query(model.Ingredients.name)
+    .join(model.QuantifiedIngredients)
+    .filter(model.QuantifiedIngredients.recipes_id == recipe_id)
+    .all())
+    ingredient_names = [ing[0] for ing in ingredients]
+
+    steps = (
+    db.session.query(model.Steps.description)
+    .filter(model.Steps.recipe_id == recipe_id)
+    .all())
+    steps_names =[st[0] for st in steps]
+    recipe = model.Recipes.query.get(recipe_id)
+
+    return render_template("recipe/recipe_view.html", recipe = recipe, recipe_id=recipe_id, ingredients = ingredient_names, steps = steps_names)
+
+@bp.route("/recipe_view/<int:recipe_id>/rate", methods=["POST"] )
+@flask_login.login_required
+def rate(recipe_id):
+    rating = request.form.get("rating")
+    new_rate = model.Rating(value = rating, user_id = flask_login.current_user.id, recipes_id = recipe_id)
+    db.session.add(new_rate)
+    db.session.commit()
+    return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
+
+@bp.route("/recipe_view/<int:recipe_id>/upload_photo", methods=["POST"] )
+@flask_login.login_required
+def upload_photo(recipe_id):
+    rating = request.form.get("rating")
+    new_rate = model.Rating(value = rating, user_id = flask_login.current_user.id, recipes_id = recipe_id)
+    db.session.add(new_rate)
+    db.session.commit()
+    return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
+
 
 """@bp.route("/recipe1")
 def recipe1():
