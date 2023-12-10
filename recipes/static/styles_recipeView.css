@@ -158,3 +158,16 @@ body{
     transition: background 1s; 
 }
 
+.bookmark-btn {
+  position: absolute;
+  top: 140px; 
+  right: 200px; 
+  padding: 10px 15px;
+  background-color: #96210f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Constantia", serif;
+}
+

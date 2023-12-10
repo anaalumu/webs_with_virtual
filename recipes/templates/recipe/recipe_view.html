@@ -55,15 +55,19 @@
                     {% endfor %}
                 </ol>
         </div>
-        <!--<div class="other-photos">
+        <div class="other-photos">
             <h2>Photos from other users:</h2>
-                {% for ph in recipe.other_photos %}
-                    <img src="{{ph}}" alt="Imagen de otro usuario">  
-                {% endfor %}
-            </div>-->
+                {% if recipe.photos %}
+                <div>
+                    {% for photo in recipe.photos %}
+                        <img src="{{ url_for('static', filename='other_photos/' ~ recipe_id ~ '-' ~ photo.id ~ '.' ~ photo.file_extension) }}" alt="photo">
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
             {% if current_user.is_authenticated %}
             <div class="forms-for-users">
-                    <h2>Rate the recipe!</h2>
+                <h2>Rate the recipe!</h2>
                     <form action="{{ url_for('recipe.rate', recipe_id=recipe.id)}}" method="post">
                         <div class="rating">
                             <input type="radio" id="star5" name="rating" value=5 />
@@ -80,15 +84,19 @@
                         <div class="btn-field">
                             <button type="submit" >Rate</button>
                         </div>
-                    </form>main_photo
+                    </form>
                     <h2>Post a Photo of your Version</h2>
                     <form action="{{ url_for('recipe.upload_photo', recipe_id=recipe_id) }}" method="POST" enctype="multipart/form-data">
                         <label for="photo">Upload Photo:</label>
                         <input type="file" id= "other_photos" name="other_photos" accept="image/jpeg,image/png" required/>
                         <button type="submit">Submit</button>
                     </form>
+                    <form action="{{ url_for('recipe.bookmark', recipe_id=recipe_id) }}" method="POST">
+                        <button type="submit" name = "bookmark" class="bookmark-btn">Bookmark Recipe</button>
+                    </form>
             </div>
             {% endif %}
+</div>
 {% endblock %}
 
 

@@ -172,9 +172,39 @@ def rate(recipe_id):
 @bp.route("/recipe_view/<int:recipe_id>/upload_photo", methods=["POST"] )
 @flask_login.login_required
 def upload_photo(recipe_id):
-    rating = request.form.get("rating")
-    new_rate = model.Rating(value = rating, user_id = flask_login.current_user.id, recipes_id = recipe_id)
-    db.session.add(new_rate)
+    #main photo: 
+    uploaded_file = request.files["other_photos"]
+  #check that the photo has been correctly updated:  
+    if uploaded_file.filename == '':
+        flash("No file selected")
+        return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
+
+    content_type = uploaded_file.content_type
+    if content_type == "image/png":
+        file_extension = "png"
+    elif content_type == "image/jpeg":
+        file_extension = "jpg"
+    else:
+        flash("The Content-Time of the image is not supported")
+        return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
+
+    photo = model.Photos(user_id=flask_login.current_user.id, recipe_id=recipe_id,
+    file_extension=file_extension)
+    db.session.add(photo)
+    db.session.commit()
+
+    filename = str(recipe_id)+ "-" + str(photo.id) + "." + file_extension
+
+    path = (pathlib.Path(current_app.root_path)/"static"/ "other_photos"/filename)
+    uploaded_file.save(path)
+
+    return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
+
+@bp.route("/recipe_view/<int:recipe_id>/bookmark", methods=["POST"] )
+@flask_login.login_required
+def bookmark(recipe_id):
+    new_bookm = model.Bookmarks(user_id = flask_login.current_user.id, recipe_id = recipe_id)
+    db.session.add(new_bookm)
     db.session.commit()
     return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
 
