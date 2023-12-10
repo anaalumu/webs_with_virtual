@@ -1,5 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import current_user
+from . import db
+from sqlalchemy import func
+from sqlalchemy.orm import joinedload
 
 from . import model
 
@@ -8,13 +11,19 @@ bp = Blueprint("main", __name__)
 
 @bp.route("/")
 def index():
-    """user = model.User(name = "Mary", password = "1234", email = "mary@example.com")
-    r = model.Recipe(user_id = 1, title = "Gingerbread Cookies", main_photo = "static/recipe1.jpg", 
-    description = "Delicius cookies for doing on christmas", cooking_time = 40, n_person = 4, dificulty = "Easy", 
-                     quantified_ingredients = ["5 Eggs", "500 gr Flour", "Ginger", "50 gr Sugar"], steps = ["Beat the eggs", "Take a spoon", "Turn on the oven", "Decorate"]) 
-       # model.Recipe(2, user, "Stuffed Chicken", "static/recipe2.jpg"),
-       # model.Recipe(3, user, "Panetone", "static/recipe3.jpg")"""   
-    return render_template("main/index.html") 
+    best_rated_recipes = db.session.query(
+        model.Recipes.id,
+        model.Recipes.title,
+        model.User.name.label('user'),
+        model.Recipes.main_photo
+    ) \
+    .join(model.User) \
+    .join(model.Rating) \
+    .group_by(model.Recipes.id, model.Recipes.title, model.User.name, model.Recipes.main_photo) \
+    .order_by(func.avg(model.Rating.value).desc()) \
+    .limit(6) \
+    .all()
+    return render_template("main/index.html", recipes=best_rated_recipes)
 
 @bp.route("/profile")
 def profile():

@@ -69,3 +69,17 @@
     border-radius: 5px;
 }
 
+.recipe-display{
+    margin-top: 50px;
+    margin-bottom: 20px; 
+    margin-left: 200px;
+    margin-right: 200px; 
+} 
+
+.recipe-display h1{
+    font-size: 30px;
+    color:rgba(79, 48, 16, 0.8);
+    margin-bottom: 60px;
+    position: relative;
+} 
+

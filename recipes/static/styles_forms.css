@@ -113,5 +113,5 @@ input{
 
 /* Additional styling for the submit button */
 .btn-field button {
-    flex-basis: 100%; /* Make the button take full width */
+    flex-basis: 100%;
 }

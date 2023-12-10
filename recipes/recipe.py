@@ -141,7 +141,6 @@ def recipe_completed(recipe_id):
     return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
 
 @bp.route("/recipe_view/<int:recipe_id>")
-@flask_login.login_required
 def recipe_view(recipe_id):
     recipe = model.Recipes.query.get(recipe_id)
     ingredients = (
