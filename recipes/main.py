@@ -25,9 +25,9 @@ def index():
     .all()
     return render_template("main/index.html", recipes=best_rated_recipes)
 
-@bp.route("/profile")
-def profile():
-   # user = model.User(name = "Mary", password = "1234", email = "mary@example.com")
-    return render_template("main/profile.html")
+@bp.route("/profile/<int:user_id>")
+def profile(user_id):
+    user = model.Users.query.get(user_id)
+    return render_template("main/profile.html", user = user)
 
 

@@ -13,7 +13,7 @@
 
 
     <div class="created-by">
-        <p><b>Published by: </b> <i>{{recipe.user.name}}</i></p>
+        <p><b>Published by: </b> <i><a href="{{ url_for('main.profile', user_id=recipe.user.id) }}"> {{recipe.user.name}}></a></i></p>
     </div>
 
     <div class="description">

@@ -159,7 +159,7 @@ def recipe_view(recipe_id):
 
     return render_template("recipe/recipe_view.html", recipe = recipe, recipe_id=recipe_id, ingredients = ingredient_names, steps = steps_names)
 
-@bp.route("/recipe_view/<int:recipe_id>/rate", methods=["POST"] )
+@bp.route("/recipe_view/<int:recipe_id>/rate", methods=["POST"])
 @flask_login.login_required
 def rate(recipe_id):
     rating = request.form.get("rating")
