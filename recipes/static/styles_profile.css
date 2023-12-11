@@ -1,0 +1,65 @@
+/* User Profile View styles */
+
+body {
+    font-family: "Constantia", serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(79, 48, 16, 0.8), rgba(108, 84, 50, 0.8)), url(image_homepage.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .user-info {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .user-info h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #9d1b1b;
+  }
+
+  .user-info h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #554b4b;
+  }
+  
+  .user-info h2 a {
+    color: #9d1b1b;
+    text-decoration: none;
+  }
+
+  .recipe-image {
+    max-width: 100%;
+    height: auto; 
+    display: block; 
+    border-radius: 8px; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+  }
+
+  .created-recipes {
+    list-style: none; /* Elimina los marcadores de la lista */
+    padding: 0; /* Elimina el relleno predeterminado */
+  }
+  
+  .created-recipes li { 
+    display: inline-block; /* Convierte los elementos <li> en elementos en línea */
+    margin: 0 10px; /* Espaciado entre elementos de la lista */
+    vertical-align: top;
+    font-size: 20px;
+    color:rgba(79, 48, 16, 0.8);
+
+  }
+
+  .recipe-image:hover {
+    opacity: 0.8; /* Reducción de la opacidad al pasar el mouse */
+    transition: opacity 0.3s ease; /* Efecto de transición suave */
+  }
+  

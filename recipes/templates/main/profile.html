@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 
+{% block specific_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_profile.css') }}">
+{% endblock %}
+
 {% block content %}
 
 <section class="user-info">
     <h1>User Profile</h1>
-    <h2><a href="user-profile.html">{{ user.name }}</a></h2>
+    <h2>Username: {{ user.name }}</h2>
 
     <h3>Created Recipes:</h3>
     <ul class="created-recipes">
         {% for recipe in user.recipes %}
-            <li>{{ recipe.title }}</li>
+            <li><b>{{ recipe.title }}</b></li>
+            <a href="{{ url_for('recipe.recipe_view', recipe_id=recipe.id) }}">
+            <img class="recipe-image"src="{{ url_for('static', filename='main_photos/' + recipe.main_photo) }}" alt="Recipe Image">
+            </a>
         {% endfor %}
     </ul>
     

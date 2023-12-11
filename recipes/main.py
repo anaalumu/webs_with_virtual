@@ -27,7 +27,7 @@ def index():
 
 @bp.route("/profile/<int:user_id>")
 def profile(user_id):
-    user = model.Users.query.get(user_id)
+    user = model.User.query.get(user_id)
     return render_template("main/profile.html", user = user)
 
 

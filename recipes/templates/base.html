@@ -20,6 +20,7 @@
             <a href="{{ url_for('recipe.create_recipe') }}">Create Recipe</a></li>
             {% if current_user.is_authenticated %}
                     <div class="welcome-user">Welcome, {{ current_user.name }}!</div>
+                    <a href="{{ url_for('main.profile', user_id=current_user.id) }}">Profile</a></li>
                     <div class="log-out-btn">
                         <a href="{{ url_for('auth.logout') }}">Log Out</a>
                     </div>
