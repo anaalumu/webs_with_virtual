@@ -1,0 +1,109 @@
+/* Estilo general de la página */
+body {
+    font-family: "Constantia", serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(79, 48, 16, 0.8), rgba(108, 84, 50, 0.8)), url(image_homepage.jpg);
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+}
+
+h2{
+    color:#333;
+} 
+
+.all-recipes{
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+} 
+
+.recipe-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.recipe {
+    width: 300px;
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 15px;
+}
+
+.recipe img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.recipe h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #9d1b1b;
+}
+
+.recipe p {
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.recipe-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #9d1b1b;
+}
+/* to choose */
+.select-container {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* label */
+.select-container label {
+    font-size: 18px;
+    color: #fff;
+    margin-right: 10px;
+}
+
+/* select */
+.select-container select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    width: 200px;
+}
+
+/* Estilos cuando el select está enfocado */
+.select-container select:focus {
+    outline: none;
+    border-color: #9d1b1b;
+    box-shadow: 0 0 5px rgba(157, 27, 27, 0.5);
+}
+

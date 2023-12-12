@@ -17,8 +17,9 @@
         </div>
         <nav class="nav-container">
             <a href="{{ url_for('main.index') }}">Home</a></li>
-            <a href="{{ url_for('recipe.create_recipe') }}">Create Recipe</a></li>
+            <a href="{{ url_for('main.all_recipes') }}">Recipes</a></li>
             {% if current_user.is_authenticated %}
+                <a href="{{ url_for('recipe.create_recipe') }}">Create Recipe</a></li>
                     <div class="welcome-user">Welcome, {{ current_user.name }}!</div>
                     <a href="{{ url_for('main.profile', user_id=current_user.id) }}">Profile</a></li>
                     <div class="log-out-btn">

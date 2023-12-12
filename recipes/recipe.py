@@ -63,7 +63,8 @@ def create_recipe_post():
 @flask_login.login_required
 def recipe_interm(recipe):
     session["recipe_id"] = recipe.id
-    return render_template("recipe/recipe_interm.html", recipe = recipe)
+    existing_ingredients = model.Ingredients.query.all()
+    return render_template("recipe/recipe_interm.html", recipe = recipe, existing_ingredients = existing_ingredients)
 
 @bp.route("/recipe_interm/<int:recipe_id>/add_ingredient", methods=["POST"])
 @flask_login.login_required
@@ -167,8 +168,20 @@ def recipe_view(recipe_id):
 @bp.route("/recipe_view/<int:recipe_id>/rate", methods=["POST"])
 @flask_login.login_required
 def rate(recipe_id):
+    user_id = flask_login.current_user.id
     rating = request.form.get("rating")
-    new_rate = model.Rating(value = rating, user_id = flask_login.current_user.id, recipes_id = recipe_id)
+  #check if it has been already rated  
+    existing_rating = model.Rating.query.filter_by(user_id=user_id, recipes_id=recipe_id).first()
+    if existing_rating:
+        flash("You have already rated this recipe.", category = "rate")
+        return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
+
+  #check that is not a user recipe:
+    if user_id == recipe.user.id:
+        flash("You can't rate your own recipe.", category = "rate")
+        return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
+
+    new_rate = model.Rating(value = rating, user_id = user_id, recipes_id = recipe_id)
     db.session.add(new_rate)
     db.session.commit()
     return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
@@ -207,7 +220,22 @@ def upload_photo(recipe_id):
 @bp.route("/recipe_view/<int:recipe_id>/bookmark", methods=["POST"] )
 @flask_login.login_required
 def bookmark(recipe_id):
+    user_id = flask_login.current_user.id
+
+    # Check if the user is the author of the recipe
+    recipe = model.Recipes.query.get(recipe_id)
+    if user_id == recipe.user.id:
+        flash("You can't bookmark your own recipe.", category="bookmark")
+        return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
+
+    # Check if the user has already bookmarked this recipe
+    existing_bookmark = model.Bookmarks.query.filter_by(user_id=user_id, recipe_id=recipe_id).first()
+    if existing_bookmark:
+        flash("You have already bookmarked this recipe.", category="bookmark")
+        return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
+    
     new_bookm = model.Bookmarks(user_id = flask_login.current_user.id, recipe_id = recipe_id)
     db.session.add(new_bookm)
     db.session.commit()
     return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
+

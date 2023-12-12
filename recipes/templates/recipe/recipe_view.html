@@ -85,15 +85,31 @@
                             <button type="submit" >Rate</button>
                         </div>
                     </form>
+                    <div class="flash-rate">
+                        {% with messages = get_flashed_messages(category_filter=["rate"]) %}
+                            {% for message in messages %}
+                                <div class="notification">{{ message }}</div>
+                            {% endfor %}
+                        {% endwith %}
+                    </div>
                     <h2>Post a Photo of your Version</h2>
                     <form action="{{ url_for('recipe.upload_photo', recipe_id=recipe_id) }}" method="POST" enctype="multipart/form-data">
                         <label for="photo">Upload Photo:</label>
                         <input type="file" id= "other_photos" name="other_photos" accept="image/jpeg,image/png" required/>
                         <button type="submit">Submit</button>
                     </form>
-                    <form action="{{ url_for('recipe.bookmark', recipe_id=recipe_id) }}" method="POST">
-                        <button type="submit" name = "bookmark" class="bookmark-btn">Bookmark Recipe</button>
-                    </form>
+                    <section class="bookmark">
+                        <form action="{{ url_for('recipe.bookmark', recipe_id=recipe_id) }}" method="POST">
+                            <button type="submit" name = "bookmark" class="bookmark-btn">Bookmark Recipe</button>
+                        </form>
+                        <div class="flash-bookmark">
+                            {% with messages = get_flashed_messages(category_filter=["bookmark"]) %}
+                                {% for message in messages %}
+                                    <div class="notification-book">{{ message }}</div>
+                                {% endfor %}
+                            {% endwith %}
+                        </div>
+                    </section>
             </div>
             {% endif %}
 </div>

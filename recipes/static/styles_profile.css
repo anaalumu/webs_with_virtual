@@ -36,17 +36,18 @@ body {
   }
 
   .recipe-image {
-    max-width: 100%;
-    height: auto; 
     display: block; 
     border-radius: 8px; 
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     margin-top: 10px;
+    max-width: 300px;
+    height: auto;
   }
 
   .created-recipes {
     list-style: none; 
     padding: 0; 
+    display: inline-block;
   }
   
   .created-recipes li { 
@@ -64,9 +65,12 @@ body {
   }
 
 
+
 .bookmarked-recipes img {
     border-radius: 5px;
     margin-bottom: 10px;
+    max-width: 300px;
+    height: auto;
 }
 
 .bookmarked-recipes h2 {

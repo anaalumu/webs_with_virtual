@@ -170,4 +170,13 @@ body{
   cursor: pointer;
   font-family: "Constantia", serif;
 }
+.bookmark {
+  display:block;
+}
+.notification-book{
+  color:rgb(51, 46, 46);
+  position: absolute;
+  top: 180px; 
+  right: 200px;
+} 
 
