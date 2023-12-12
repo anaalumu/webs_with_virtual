@@ -26,14 +26,15 @@
             <img src="{{ photo.url }}" alt="{{ photo.title }}">
         {% endfor %}
     </div>
-
-    {% if authenticated_user and authenticated_user.id == user.id %}
+    {% if current_user.is_authenticated and current_user.id == user.id %}
         <h3>Bookmarked Recipes:</h3>
-        <ul class="bookmarked-recipes">
+        <div class="bookmarked-recipes">
             {% for bookmarked_recipe in user.bookmarks %}
-                <li>{{ bookmarked_recipe.title }}</li>
+                <h2 class="recipe-title">{{ bookmarked_recipe.recipes.title }}</h2>
+                <img class="recipe-img" src="{{ url_for('static', filename='main_photos/' + bookmarked_recipe.recipes.main_photo) }}"  alt="Recipe 1">
+                <a class="recipe-link" href="{{ url_for('recipe.recipe_view', recipe_id=bookmarked_recipe.recipes.id) }}">View Recipe Steps</a>
             {% endfor %}
-        </ul>
+            </div>
     {% endif %}
 </section>
 

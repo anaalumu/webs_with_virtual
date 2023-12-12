@@ -60,7 +60,7 @@
     margin-bottom: 15px;
 }
 
-.recipe a {
+.recipe-link {
     display: inline-block;
     padding: 8px 15px;
     background-color: #333;

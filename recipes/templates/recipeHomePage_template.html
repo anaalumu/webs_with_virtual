@@ -1,6 +1,6 @@
 <div class="recipe">
   <h2 class="recipe-title">{{ recipe.title }}</h2>
-  <h3 class="recipe-user">Published by: {{ recipe.user }}</h2>
+  <h3 class="recipe-user">Published by:<a href="{{ url_for('main.profile', user_id=recipe.user_id) }}"> {{ recipe.user }}</a></h2>
   <img class="recipe-img" src="{{ url_for('static', filename='main_photos/' + recipe.main_photo) }}"  alt="Recipe 1">
   <a class="recipe-link" href="{{ url_for('recipe.recipe_view', recipe_id=recipe.id) }}">View Recipe Steps</a>
 </div>

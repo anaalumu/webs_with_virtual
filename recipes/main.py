@@ -14,6 +14,7 @@ def index():
     best_rated_recipes = db.session.query(
         model.Recipes.id,
         model.Recipes.title,
+        model.User.id.label('user_id'),
         model.User.name.label('user'),
         model.Recipes.main_photo
     ) \
@@ -23,6 +24,7 @@ def index():
     .order_by(func.avg(model.Rating.value).desc()) \
     .limit(6) \
     .all()
+    
     return render_template("main/index.html", recipes=best_rated_recipes)
 
 @bp.route("/profile/<int:user_id>")

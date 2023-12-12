@@ -42,7 +42,7 @@
         <h2>Ingredients</h2>
             <ul>
                 {% for ing in ingredients %}
-                    <li>{{ing}}</li> 
+                    <li>{{ing.number}} {{ing.unit_measurement}} of {{ing.name}}</li> 
                 {% endfor %}
             </ul>
         </div>
@@ -51,7 +51,7 @@
             <h2>Steps</h2>
                 <ol>
                     {% for step in steps %}
-                        <li>{{step}}</li> 
+                        <li>{{step.description}}</li> 
                     {% endfor %}
                 </ol>
         </div>
