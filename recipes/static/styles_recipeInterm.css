@@ -1,4 +1,4 @@
-/* Recipe View styles: */
+/* Recipe View: ingredients, steps info display (rev) */
 
 body {
     font-family: "Constantia", serif;
@@ -64,16 +64,94 @@ body {
 }
 
 .forms-for-users button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
     background: rgba(79, 48, 16, 0.8);
     color: #fff;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 8px;
     border: 0;
     outline: 0;
     cursor: pointer;
-    transition: background 1s;
+    transition: background 0.3s;
 }
 
 .forms-for-users button:hover {
-    background: rgba(108, 84, 50, 0.8);
+    background: rgba(108, 84, 50, 0.9);
 }
+
+.forms-for-users input[type="text"],
+.forms-for-users input[type="number"],
+.forms-for-users textarea{
+    width: calc(100%-20px);
+    padding:12px;
+    margin-bottom:15px;
+    border-radius:15px;
+    border-radius:8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; 
+}   
+
+.forms-for-users textarea {
+    resize: vertical;
+} 
+
+.btn-field{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-field button{
+    flex-basis: 25%;
+    background: rgba(79, 48, 16, 0.8);
+    color: #fff;
+    height: 20px;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s; 
+}
+
+.input-field{
+    background: #eaeaea;
+    margin: 10px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+input{
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 18px 15px;
+}
+
+textarea{
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 18px 15px;
+} 
+
+.btn-submit button{
+    flex-basis: 40%;
+    background: rgba(241, 238, 234, 0.8);
+    color: rgba(79, 48, 16, 0.8);
+    height: 40px;
+    border-radius: 25px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s; 
+    border: 2px solid rgba(79, 48, 16, 0.8);
+    font-size:18px;
+    margin-top: 10px;
+    margin-left: 210px;
+}
+

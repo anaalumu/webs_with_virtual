@@ -21,7 +21,7 @@ def index():
     .join(model.Rating) \
     .group_by(model.Recipes.id, model.Recipes.title, model.User.name, model.Recipes.main_photo) \
     .order_by(func.avg(model.Rating.value).desc()) \
-    .limit(6) \
+    .limit(2) \
     .all()
     
     return render_template("main/index.html", recipes=best_rated_recipes)

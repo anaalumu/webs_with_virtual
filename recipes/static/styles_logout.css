@@ -31,6 +31,17 @@
     font-size: 20px;
 } 
 
+.dark-mode .form-box { 
+    background: #333;
+}
+
+.dark-mode .form-box h1{
+    color:rgba(215, 144, 73, 0.8);
+} 
+
+.dark-mode .input-field{
+    background: #484646;}
+
 .form-box h1::after{
     content: '';
     width:30px;
@@ -87,7 +98,7 @@ input{
 }
 
 
-/* Syles for the buttom */
+/* log out buttom */
 .logout-btn {
     display: inline-block;
     padding: 10px 20px;
@@ -102,7 +113,7 @@ input{
     width: 100px;
 }
 
-.login-btn:hover {
+.logout-btn:hover {
     background-color: #cb6060;
 }
 

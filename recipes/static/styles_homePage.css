@@ -1,5 +1,4 @@
-
-/* Home page photo and text */
+/* homepage photo and text inside */
 
 .full-width-section {
     position: relative;
@@ -10,8 +9,6 @@
     background-position: center;
     color: #fff; 
 }
-
-/* Styles for the Welcome text */
 
 .text-overlay {
     position: absolute;
@@ -27,7 +24,7 @@
 }
 
  
-/* Styles for the Recipes */
+/* recipes best rated isplay*/
 
 .recipes {
     display: flex;

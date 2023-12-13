@@ -1,4 +1,3 @@
-/*para el user registration form SIN ACABAR*/
 .content{
     width:100%;
     height: 150vh;
@@ -11,31 +10,28 @@
 .form-box {
     width: 90%;
     max-width: 450px;
-    position: relative;
+    /*position: relative; */
     margin: 0 auto; 
     background: #fff;
     padding: 50px 60px 70px;
     text-align: center;
 }
 
-.dark-mode .form-box {
-    width: 90%;
-    max-width: 450px;
-    position: relative;
-    margin: 0 auto; 
-    background:#333;
-    padding: 50px 60px 70px;
-    text-align: center;
-    color: white;
+.dark-mode .form-box { 
+    background: #333;
 }
 
 .dark-mode .form-box h1{
-    font-size: 30px;
-    color:rgba(222, 155, 89, 0.8);
-    margin-bottom: 60px;
-    position: relative;
-}
+    color:rgba(215, 144, 73, 0.8);
+} 
 
+.dark-mode .input-field{
+    background: #484646;}
+    
+.dark-mode .input-field label {
+    display: block;
+    color: rgba(228, 175, 122, 0.8);
+}
 .form-box h1{
     font-size: 30px;
     color:rgba(79, 48, 16, 0.8);
@@ -55,17 +51,11 @@
     transform: translateX(-50%);
 }
 
+.dark-mode .btn-field button{
+    background-color: rgba(215, 144, 73, 0.8);} 
+
 .input-field{
     background: #eaeaea;
-    margin: 10px 0;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-}
-
-
-.dark-mode .input-field{
-    background: #444141;
     margin: 10px 0;
     border-radius: 3px;
     display: flex;
@@ -131,20 +121,12 @@ input{
     margin: 15px 0;
 }
 
-/* Additional styling for the file input label */
 .input-field label {
     display: block;
     margin-bottom: 5px;
     color: rgba(79, 48, 16, 0.8);
 }
 
-.dark-mode .input-field label {
-    display: block;
-    margin-bottom: 5px;
-    color: rgba(219, 152, 86, 0.8);
-}
-
-/* Additional styling for the submit button */
 .btn-field button {
     flex-basis: 100%;
 }

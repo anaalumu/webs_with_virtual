@@ -33,25 +33,39 @@
             </ol>
     </div>
     <form action="{{ url_for('recipe.add_ingredient', recipe_id=recipe.id) }}" method="post">
-        <input type="text" list="ingredients" name="ingredient" placeholder="Select or Add Ingredient" required>
+        <div class="input-field">
+            <input type="text" list="ingredients" name="ingredient" placeholder="Select or Add Ingredient" required>
+        </div>
         <datalist id="ingredients">
             {% for ing in existing_ingredients %}
                 <option value="{{ ing.name }}">
             {% endfor %}
         </datalist>
-        <input type="number" name="quantity" placeholder="Quantity" required>
-        <input type="text" name="units" placeholder="Units" required>
-        <button type="submit" name="add_ingredient">Add Ingredient</button>
+        <div class="input-field">
+            <input type="number" name="quantity" placeholder="Quantity" required>
+        </div>
+        <div class="input-field">
+            <input type="text" name="units" placeholder="Units" required>
+        </div>
+        <div class="btn-field">
+            <button type="submit" name="add_ingredient">Add Ingredient</button>
+        </div>
     </form>
 
     <form action="{{ url_for('recipe.add_step', recipe_id=recipe.id) }}" method="post">
-        <textarea name="step_description" placeholder="Enter Step Description" required></textarea>
-        <button type="submit" name="add_step">Add Step</button>
+        <div class="input-field">
+            <textarea name="step_description" placeholder="Enter Step Description" required></textarea>
+        </div>
+        <div class="btn-field">
+            <button type="submit" name="add_step">Add Step</button>
+        </div>
     </form>
     
     <!-- Mark Recipe as Complete -->
     <form action="{{ url_for('recipe.recipe_completed', recipe_id=recipe.id) }}" method="post">
-        <button type="submit" name="mark_complete">Submit Recipe</button>
+        <div class="btn-submit">
+            <button type="submit" name="mark_complete">Submit Recipe</button>
+        </div>
     </form>
 
 </div>

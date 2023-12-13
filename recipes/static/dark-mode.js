@@ -1,4 +1,4 @@
-// Cambiar entre modo claro y oscuro al hacer clic en el botón
+// change to dark mode revisar views
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
