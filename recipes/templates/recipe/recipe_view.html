@@ -68,6 +68,7 @@
             {% if current_user.is_authenticated %}
             <div class="forms-for-users">
                 <h2>Rate the recipe!</h2>
+                <p>Average Rating: {% if average_rating %}{{ '%.2f' % average_rating }}{% else %}No ratings yet{% endif %}</p>
                     <form action="{{ url_for('recipe.rate', recipe_id=recipe.id)}}" method="post">
                         <div class="rating">
                             <input type="radio" id="star5" name="rating" value=5 />

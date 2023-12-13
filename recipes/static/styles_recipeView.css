@@ -52,6 +52,7 @@ h1 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   margin: 0 auto;
 }
+
   
 .n-persons{
   display: flex;
@@ -150,6 +151,17 @@ h1 {
 
 .forms-for-users {
   margin-top: 20px;
+}
+
+.forms-for-users p{
+  font-family: "Constantia", serif;
+  color:#9d1b1b;
+  font-size: 20px;
+
+}
+
+.dark-mode .forms-for-users p{
+  color:#d37070
 }
 
 .rating {

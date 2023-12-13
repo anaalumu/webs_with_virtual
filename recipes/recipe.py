@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 import pathlib
 from flask import current_app
 from flask import session
+from sqlalchemy import func
 
 from . import model
 
@@ -162,8 +163,8 @@ def recipe_view(recipe_id):
     .all())
 
     recipe = model.Recipes.query.get(recipe_id)
-
-    return render_template("recipe/recipe_view.html", recipe = recipe, recipe_id=recipe_id, ingredients = ingredients, steps = steps)
+    average_rating = db.session.query(func.avg(model.Rating.value)).filter_by(recipes_id=recipe_id).scalar()
+    return render_template("recipe/recipe_view.html", recipe = recipe, recipe_id=recipe_id, ingredients = ingredients, steps = steps, average_rating=average_rating)
 
 @bp.route("/recipe_view/<int:recipe_id>/rate", methods=["POST"])
 @flask_login.login_required
