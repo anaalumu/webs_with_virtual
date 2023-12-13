@@ -63,8 +63,9 @@
     align-items: center;
 }
 
+
 .dark-mode .input-field{
-    background: #eaeaea;
+    background: #444141;
     margin: 10px 0;
     border-radius: 3px;
     display: flex;
@@ -135,6 +136,12 @@ input{
     display: block;
     margin-bottom: 5px;
     color: rgba(79, 48, 16, 0.8);
+}
+
+.dark-mode .input-field label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgba(219, 152, 86, 0.8);
 }
 
 /* Additional styling for the submit button */
