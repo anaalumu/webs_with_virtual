@@ -83,3 +83,10 @@
     position: relative;
 } 
 
+.dark-mode .recipe-display h1{
+    font-size: 30px;
+    color:rgba(235, 153, 70, 0.8);
+    margin-bottom: 60px;
+    position: relative;
+}
+

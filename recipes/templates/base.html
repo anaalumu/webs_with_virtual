@@ -15,6 +15,9 @@
             <img src = "{{ url_for('static', filename='logo.png') }}", alt ="picture fork">
             <h2>Christmas Recipes</h2>
         </div>
+        <button id="theme-toggle">Cambiar Tema</button>
+        <script src="{{ url_for('static', filename='dark-mode.js') }}"></script>
+
         <nav class="nav-container">
             <a href="{{ url_for('main.index') }}">Home</a></li>
             <a href="{{ url_for('main.all_recipes') }}">Recipes</a></li>

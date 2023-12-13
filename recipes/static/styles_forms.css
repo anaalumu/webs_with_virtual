@@ -11,11 +11,29 @@
 .form-box {
     width: 90%;
     max-width: 450px;
-    /*position: relative; */
+    position: relative;
     margin: 0 auto; 
     background: #fff;
     padding: 50px 60px 70px;
     text-align: center;
+}
+
+.dark-mode .form-box {
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    margin: 0 auto; 
+    background:#333;
+    padding: 50px 60px 70px;
+    text-align: center;
+    color: white;
+}
+
+.dark-mode .form-box h1{
+    font-size: 30px;
+    color:rgba(222, 155, 89, 0.8);
+    margin-bottom: 60px;
+    position: relative;
 }
 
 .form-box h1{
@@ -38,6 +56,14 @@
 }
 
 .input-field{
+    background: #eaeaea;
+    margin: 10px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.dark-mode .input-field{
     background: #eaeaea;
     margin: 10px 0;
     border-radius: 3px;

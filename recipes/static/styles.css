@@ -1,4 +1,9 @@
 /* Navigation Bar */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
 header{
     height: 75;
     justify-content: space-between;

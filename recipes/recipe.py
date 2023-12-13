@@ -177,6 +177,7 @@ def rate(recipe_id):
         return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))
 
   #check that is not a user recipe:
+    recipe = model.Recipes.query.get(recipe_id)
     if user_id == recipe.user.id:
         flash("You can't rate your own recipe.", category = "rate")
         return redirect(url_for("recipe.recipe_view", recipe_id=recipe_id))

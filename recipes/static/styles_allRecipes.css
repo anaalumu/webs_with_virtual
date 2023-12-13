@@ -12,6 +12,11 @@ body {
 h2{
     color:#333;
 } 
+.dark-mode .all-recipes{
+    background-color: #333;
+    box-shadow: 0 0 10px white;
+    color:#ccc;
+} 
 
 .all-recipes{
     justify-content: space-around;
@@ -43,6 +48,16 @@ h2{
     margin-right: 15px;
 }
 
+.dark-mode .recipe {
+    width: 300px;
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #333;
+    background-color: #474444;
+    box-shadow: 0 0 10px rgb(191, 187, 187);
+    color:aliceblue;
+}
+
 .recipe img {
     width: 100%;
     height: auto;
@@ -54,6 +69,12 @@ h2{
     font-size: 1.5em;
     margin-bottom: 10px;
     color: #9d1b1b;
+}
+
+.dark-mode .recipe h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #d97b7b;
 }
 
 .recipe p {
@@ -69,6 +90,15 @@ h2{
     text-decoration: none;
     border-radius: 5px;
 }
+
+.dark-mode .recipe-link{
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #ede6e6;
+    color: rgb(3, 2, 2);
+    text-decoration: none;
+    border-radius: 5px;
+} 
 
 h1 {
     font-size: 40px;
