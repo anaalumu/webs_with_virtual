@@ -8,6 +8,9 @@ body{
     background-position: center;
     background-size: cover;
   }
+.dark-mode .body{
+  color: white;
+} 
     
   .recipe-container {
     width: 80%;
@@ -17,11 +20,26 @@ body{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
   }
+
+  .dark-mode .recipe-container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #333;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    color: white;
+  }
   
   h1 {
     font-size: 40px;
     margin-bottom: 10px;
     color: #9d1b1b;
+  }
+  .dark-mode h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #ce5d5d;
   }
   
   .title img {
@@ -55,18 +73,28 @@ body{
   .created-by p {
     color: #b70d0d;
   }
+.dark-mode .created-by p{
+  color:rgb(223, 111, 111);
+} 
   
   .description p {
     color: #444;
     line-height: 1.6;
     font-size: 15px; /* Cambia el tamaño de la fuente a 18px */ 
   }
+
+  .dark-mode .description p{
+    color: white;
+  } 
   
   .recipe-details p {
     color: #333;
     margin-bottom: 8px;
     font-size: 15px;
   }
+.dark-mode .recipe-details p{
+  color:white;
+} 
   
   .ingredients ul {
     list-style-type: disc;
@@ -80,6 +108,10 @@ body{
     font-size: 15px;
     line-height: 2;
   }
+
+  .dark-mode .ingredients li{
+    color:white;
+  } 
   
   .steps ol {
     list-style: decimal;
@@ -90,6 +122,11 @@ body{
   .steps li{
     font-size: 15px;
     line-height: 2;
+  }
+  .dark-mode .steps li{
+    font-size: 15px;
+    line-height: 2;
+    color:white;
   }
   
   .other-photos {

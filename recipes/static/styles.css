@@ -64,3 +64,24 @@ nav a{
     color: white;
     font-weight: bold;
 }
+.dark-mode-btn { 
+    background-color: beige;
+    border: 2px solid #000000; 
+    /* Borde del botón */ 
+    color: #000000; /* Color del texto del botón */ 
+    padding: 10px 15px; /* Espaciado interno del botón */ 
+    border-radius: 5px; /* Redondeado de los bordes del botón */ 
+    cursor: pointer; /* Cursor al pasar sobre el botón */ /* Estilos adicionales para alinear imagen y texto */ 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    font-family: "Constantia", serif;
+} /* Estilo para la imagen dentro del botón */ 
+
+.dark-mode-btn img{
+    width: 40px; 
+    /* Ancho de la imagen */ 
+    height: 40px; 
+    /* Altura de la imagen */ 
+    margin-left: 5px; /* Espacio entre el texto y la imagen */ 
+}
