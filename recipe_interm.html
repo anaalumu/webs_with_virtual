@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block specific_css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_recipeInterm.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="recipe-info">
+    <h1>The information you provided from the recipe is:</h1>
+        <ul>
+            <li><b>Title: </b>{{recipe.title}}</li>
+            <li><b>Description: </b>{{recipe.description}}</li>
+            <li><b>Number of guests: </b>{{recipe.n_person}}</li>
+            <li><b>Cooking Time: </b>{{recipe.cooking_time}}</li>
+            <li><b>Dificulty level: </b>{{recipe.dificulty}}</li>
+        </ul>
+        <img src="{{ url_for('static', filename='main_photos/' + recipe.main_photo) }}" alt="Recipe Image">
+    
+    <div class="ingredients"> 
+        <h2>Ingredients already added:</h2>
+            <ul>
+                {% for ing in ingredients %}
+                    <li>{{ing.number}} {{ing.unit_measurement}} of {{ing.name}}</li> 
+                {% endfor %}
+            </ul>
+    </div>
+    <div class="steps">
+        <h2>Steps already added:</h2>
+            <ol>
+                {% for step in steps %}
+                    <li>{{step.description}}</li> 
+                {% endfor %}
+            </ol>
+    </div>
+    <form action="{{ url_for('recipe.add_ingredient', recipe_id=recipe.id) }}" method="post">
+        <div class="input-field">
+            <input type="text" list="ingredients" name="ingredient" placeholder="Select or Add Ingredient" required>
+        </div>
+        <datalist id="ingredients">
+            {% for ing in existing_ingredients %}
+                <option value="{{ ing.name }}">
+            {% endfor %}
+        </datalist>
+        <div class="input-field">
+            <input type="number" name="quantity" placeholder="Quantity" required>
+        </div>
+        <div class="input-field">
+            <input type="text" name="units" placeholder="Units" required>
+        </div>
+        <div class="btn-field">
+            <button type="submit" name="add_ingredient">Add Ingredient</button>
+        </div>
+    </form>
+
+    <form action="{{ url_for('recipe.add_step', recipe_id=recipe.id) }}" method="post">
+        <div class="input-field">
+            <textarea name="step_description" placeholder="Enter Step Description" required></textarea>
+        </div>
+        <div class="btn-field">
+            <button type="submit" name="add_step">Add Step</button>
+        </div>
+    </form>
+    
+    <!-- Mark Recipe as Complete -->
+    <form action="{{ url_for('recipe.recipe_completed', recipe_id=recipe.id) }}" method="post">
+        <div class="btn-submit">
+            <button type="submit" name="mark_complete">Submit Recipe</button>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}
+
+
